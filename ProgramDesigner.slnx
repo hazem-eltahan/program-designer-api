@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ProgramDesigner.Api/ProgramDesigner.Api.csproj" />
+  <Project Path="ProgramDesigner.Tests/ProgramDesigner.Tests.csproj" />
+</Solution>
