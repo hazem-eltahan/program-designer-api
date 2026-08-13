@@ -11,6 +11,7 @@ namespace ProgramDesigner.Api
 
             // Add services to the container.
             builder.Services.AddSingleton<IProgramStore, InMemoryProgramStore>();
+            builder.Services.AddScoped<ProgramNodeConverter>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
