@@ -47,7 +47,7 @@ namespace ProgramDesigner.Api.Controllers
                 return NotFound();
             }
             
-            var result = _validationService.Validate(program);
+            var result = _validationService.Validate(program!);
             return Ok(result);
 
         }
