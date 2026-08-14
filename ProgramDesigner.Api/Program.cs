@@ -18,6 +18,7 @@ namespace ProgramDesigner.Api
                 });
             builder.Services.AddSingleton<IProgramStore, InMemoryProgramStore>();
             builder.Services.AddScoped<ProgramNodeConverter>();
+            builder.Services.AddScoped<ValidationService>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

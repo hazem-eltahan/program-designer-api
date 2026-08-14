@@ -11,10 +11,13 @@ namespace ProgramDesigner.Api.Controllers
     {
         private readonly IProgramStore _store;
         private readonly ProgramNodeConverter _programNodeConverter;
-        public ProgramsController(IProgramStore store, ProgramNodeConverter programNodeConverter)
+        private readonly ValidationService _validationService;
+
+        public ProgramsController(IProgramStore store, ProgramNodeConverter programNodeConverter, ValidationService validationService)
         {
             _store = store;
             _programNodeConverter = programNodeConverter;
+            _validationService = validationService;
         }
 
         [HttpPost]
@@ -34,6 +37,19 @@ namespace ProgramDesigner.Api.Controllers
             }
             else
                 return NotFound();
+        }
+
+        [HttpPost("{id}/validate")]
+        public IActionResult ValidateProgram(Guid id)
+        {
+            if(!_store.TryGetProgram(id, out var program))
+            {
+                return NotFound();
+            }
+            
+            var result = _validationService.Validate(program);
+            return Ok(result);
+
         }
     }
 }
